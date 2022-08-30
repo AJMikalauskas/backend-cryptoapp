@@ -16,6 +16,10 @@ const handleRefreshToken = async (req, res) => {
     const foundUser = await User.findOne({ refreshToken }).exec();
     if(!foundUser) return res.sendStatus(403); // Forbidden -> there should be no refreshToken if the user doesnt't have the refreshToken
     
+    const email = foundUser.email;
+    const password = foundUser.password;
+    console.log(email);
+    console.log(password);
     // evaluate jwt --> do through jwt.verify() method
     jwt.verify(
         refreshToken,
@@ -36,7 +40,8 @@ const handleRefreshToken = async (req, res) => {
                 {expiresIn: '1200s'}
             )
             console.log(accessToken);
-            res.json({ roles, accessToken })
+            // Adjusted to return these values due to frontend issue with email and password not being able to be accessed in context
+            res.json({ roles, accessToken, email, password });
         }
     )
 

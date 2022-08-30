@@ -7,4 +7,12 @@ router.post('/add', coinsController.addCoinToWatchList);
       
 router.post('/retrieve', coinsController.retrieveWatchList);
 
+router.delete('/deleteCoinFromWatchlist', coinsController.removeCoinFromWatchlist);
+
+router.post('/addToDb', coinsController.addCoinsDataToDb);
+
+router.get('/coinsRetrieve',coinsController.retrieveCoinsDataFromDB);
+
+
+
 module.exports = router;

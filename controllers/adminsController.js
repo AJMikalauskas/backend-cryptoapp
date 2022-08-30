@@ -18,8 +18,8 @@ const getAllAdmins = async (req,res) => {
 
 const createNewAdmin = async (req,res) => {
     // Makes sure all fields or properties aren't null, enhances by optional chaining(?.)
-    if(!req?.body?.firstname || !req?.body?.lastname) {
-        return res.status(400).json({ 'message': ' All Fields Are Required. '});
+    if(!req?.body?.firstname || !req?.body?.lastnameFA) {
+        return res.status(400).json({'message': ' All Fields Are Required. '});
     }
     try {
         // Creates new document in specified collection in the Admin.js Model

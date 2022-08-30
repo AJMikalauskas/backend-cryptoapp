@@ -14,11 +14,26 @@ const coinSchema = new Schema({
     },
     image: {
         type: String
-    },   
+    },
+    market_cap: {
+        type:Number
+    },
     current_price: { 
         type: Number
     },
     market_cap_rank: {
+        type: Number
+    },
+    price_change_1h: {
+        type: Number
+    },
+    price_change_24h: {
+        type: Number
+    },
+    price_change_7d: {
+        type: Number
+    },
+    volume: {
         type: Number
     }
 })
