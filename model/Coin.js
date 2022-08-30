@@ -35,6 +35,9 @@ const coinSchema = new Schema({
     },
     volume: {
         type: Number
+    },
+    chartData: {
+        type: Array
     }
 })
 

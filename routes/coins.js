@@ -13,6 +13,8 @@ router.post('/addToDb', coinsController.addCoinsDataToDb);
 
 router.get('/coinsRetrieve',coinsController.retrieveCoinsDataFromDB);
 
+router.post('/addChartInfo', coinsController.addChartToDB);
 
+router.post('/retrieveChartInfo', coinsController.retrieveChartFromDB);
 
 module.exports = router;

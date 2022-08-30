@@ -94,4 +94,29 @@ const retrieveCoinsDataFromDB = async(req,res) => {
     res.json({coins});
 }
 
-module.exports = { addCoinToWatchList, retrieveWatchList, addCoinsDataToDb, retrieveCoinsDataFromDB, removeCoinFromWatchlist };
+const addChartToDB = async(req,res) => {
+    const {chartData, coin} = req.body;
+   // console.log(chartData);
+  //  console.log(coin);
+    console.log(req.body);
+    const foundCoin = await Coin.findOne({ id: coin }).exec();
+    console.log(foundCoin);
+    if (!foundCoin) return res.sendStatus(401);
+
+    foundCoin.chartData = chartData;
+    const result = await foundCoin.save();
+    console.log(result);
+
+    res.json({ chartData: foundCoin.chartData});
+}
+
+const retrieveChartFromDB = async(req,res) => {
+    const { coinName } = req.body;
+    const foundCoin = await Coin.findOne({ id: coinName }).exec();
+    console.log(foundCoin);
+
+    res.json({ chartData: foundCoin.chartData });
+}
+
+module.exports = { addCoinToWatchList, retrieveWatchList, addCoinsDataToDb, retrieveCoinsDataFromDB, 
+    removeCoinFromWatchlist, addChartToDB, retrieveChartFromDB };
