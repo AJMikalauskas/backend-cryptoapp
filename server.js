@@ -20,17 +20,19 @@ connectDB();
 // custom middleware logger
 app.use(logger);
 
+
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-app.use(credentials);
+//app.use(credentials);
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
 app.use(cors(corsOptions));
 
+
 // built-in middleware to handle urlencoded data
 // in other words, form data:  
 // ‘content-type: application/x-www-form-urlencoded’
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
 
 // built-in middleware for json 
 app.use(express.json());
