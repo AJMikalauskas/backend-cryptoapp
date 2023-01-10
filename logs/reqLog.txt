@@ -2694,3 +2694,4 @@
 20230110	08:00:54	ce942ebc-f350-47f7-8e1f-1843fd53c948	POST	http://localhost:3002	/coins/retrieveChartInfo
 20230110	08:00:54	3b43c53c-3b3b-46f8-a24e-1bba33a73b8d	OPTIONS	http://localhost:3002	/coins/retrieve
 20230110	08:00:54	d5c39d42-21d2-4a41-82b6-95cd61e38b60	POST	http://localhost:3002	/coins/retrieve
+20230110	08:04:47	2bd11680-28b1-4c74-be08-3ca61bb43a6a	GET	http://localhost:3002	/logout
