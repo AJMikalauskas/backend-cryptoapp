@@ -23,18 +23,17 @@ app.use(logger);
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-app.use(credentials);
+//app.use(credentials);
+
+app.use(function(req,res,next) { 
+    res.header("Access-Control-Allow-Origin","http:localhost:3002");
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+})
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
 app.use(cors(corsOptions));
 // corsOptions
-// app.use(function(req,res,next) { 
-//     res.header("Access-Control-Allow-Origin","*");
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE,OPTIONS');
-//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type, Accept');
-//     next();
-// })
 
 
 // built-in middleware to handle urlencoded data

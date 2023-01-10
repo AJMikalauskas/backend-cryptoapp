@@ -2,15 +2,14 @@
 const allowedOrigins = require('./allowedOrigins')
 
 const corsOptions = {
+    credentials: true,
     origin: (origin, callback) => {
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
+            return callback(null, true)
+        } 
+        callback(new Error('Not Allowed by CORS'));
     },
-    credentials: true,
-    optionsSuccessStatus: 200
+
 }
 
 // No need to export whitelist as it's logic is handled in the corsOptions object.
