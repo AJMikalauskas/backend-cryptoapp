@@ -10,9 +10,10 @@ const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
+//const allowedOrigins = require('./config/allowedOrigins');
 const PORT = process.env.PORT || 3500;
-const credentials = require("./middleware/credentials");
-// const corsOptions = require("./config/corsOptions");
+//const credentials = require("./middleware/credentials");
+const corsOptions = require("./config/corsOptions");
 
 // Connect to MongoDB
 connectDB();
@@ -21,41 +22,41 @@ connectDB();
 app.use(logger);
 
 
-let whitelist = ['http:localhost:3002'];
-let corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1) {
-            return callback(null, true)
-        } else {
-        callback(new Error('Not Allowed by CORS'));
-        }
-    },
-    credentials: true,
-    optionsSuccessStatus: 200
-}
+// let whitelist = ['http:localhost:3002'];
+// let corsOptions = {
+//     origin: (origin, callback) => {
+//         if (whitelist.indexOf(origin) !== -1) {
+//             return callback(null, true)
+//         } else {
+//         callback(new Error('Not Allowed by CORS'));
+//         }
+//     },
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// }
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
-app.use(credentials);
-app.use(cors());
+//app.use(credentials);
+app.use(cors(corsOptions));
 
-app.use(function(req,res,next) { 
- // Website you wish to allow to connect
-            //res.setHeader('Access-Control-Allow-Origin', Config.WEB_APP_HOST);
-            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002');
+// app.use(function(req,res,next) { 
+//  // Website you wish to allow to connect
+//             //res.setHeader('Access-Control-Allow-Origin', Config.WEB_APP_HOST);
+//             res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002');
 
-            // Request methods you wish to allow
-            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//             // Request methods you wish to allow
+//             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-            // Request headers you wish to allow
-            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+//             // Request headers you wish to allow
+//             res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
 
-            // Set to true if you need the website to include cookies in the requests sent
-            // to the API (e.g. in case you use sessions)
-            res.setHeader('Access-Control-Allow-Credentials', true);
+//             // Set to true if you need the website to include cookies in the requests sent
+//             // to the API (e.g. in case you use sessions)
+//             res.setHeader('Access-Control-Allow-Credentials', true);
 
-            // Pass to next layer of middleware
-            next();
-})
+//             // Pass to next layer of middleware
+//             next();
+// })
 
 // corsOptions
 
@@ -112,6 +113,7 @@ app.use(errorHandler);
 
 // Listen for mongoDB connection using mongoose.
 mongoose.connection.once('open', () => {
+  //  console.log(allowedOrigins);
     console.log('Connected To MongoDB');
     // Backend port listening of env or 3500
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
