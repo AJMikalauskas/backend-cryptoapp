@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 const credentials = require("./middleware/credentials");
-const corsOptions = require("./config/corsOptions");
+// const corsOptions = require("./config/corsOptions");
 
 // Connect to MongoDB
 connectDB();
@@ -21,22 +21,22 @@ connectDB();
 app.use(logger);
 
 
-// let whitelist = ['http:localhost:3002'];
-// let corsOptions = {
-//     origin: (origin, callback) => {
-//         if (whitelist.indexOf(origin) !== -1) {
-//             return callback(null, true)
-//         } else {
-//         callback(new Error('Not Allowed by CORS'));
-//         }
-//     },
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// }
+let whitelist = ['http:localhost:3002'];
+let corsOptions = {
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1) {
+            return callback(null, true)
+        } else {
+        callback(new Error('Not Allowed by CORS'));
+        }
+    },
+    credentials: true,
+    optionsSuccessStatus: 200
+}
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
 app.use(credentials);
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(function(req,res,next) { 
  // Website you wish to allow to connect

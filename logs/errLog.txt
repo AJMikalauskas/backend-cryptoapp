@@ -68,3 +68,5 @@
 20230110	09:07:28	bc01d816-c428-4db9-b27b-b62e0f0cbff4	Error: Not Allowed by CORS
 20230110	09:07:35	978a8742-77b5-44f3-86c3-c0cee8733fb4	Error: Not Allowed by CORS
 20230110	09:07:43	249bc074-3cd6-4bd9-b5ac-1caadfde4174	Error: Not Allowed by CORS
+20230110	10:18:21	8c2492a6-e9b0-45a3-afbc-95e482f736a6	Error: Not Allowed by CORS
+20230110	10:18:40	dd27220f-5c51-4255-a8e7-4914407fc939	Error: Not Allowed by CORS
