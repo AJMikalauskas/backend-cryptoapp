@@ -8,11 +8,11 @@ const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT'); 
 const cookieParser = require('cookie-parser');
-const corsOptions = require('./config/corsOptions');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
-const credentials = require('./middleware/credentials');
 const PORT = process.env.PORT || 3500;
+const credentials = require("./middleware/credentials");
+const corsOptions = require("./config/corsOptions");
 
 // Connect to MongoDB
 connectDB();
@@ -20,19 +20,43 @@ connectDB();
 // custom middleware logger
 app.use(logger);
 
+app.use(credentials);
 
-// Handle options credentials check - before CORS!
-// and fetch cookies credentials requirement
-//app.use(credentials);
-
-app.use(function(req,res,next) { 
-    res.header("Access-Control-Allow-Origin","http:localhost:3002");
-    res.header("Access-Control-Allow-Credentials", true);
-    next();
-})
+// let whitelist = ['http:localhost:3002'];
+// let corsOptions = {
+//     origin: (origin, callback) => {
+//         if (whitelist.indexOf(origin) !== -1) {
+//             return callback(null, true)
+//         } else {
+//         callback(new Error('Not Allowed by CORS'));
+//         }
+//     },
+//     credentials: true,
+//     optionsSuccessStatus: 200
+// }
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
 app.use(cors(corsOptions));
+
+app.use(function(req,res,next) { 
+ // Website you wish to allow to connect
+            //res.setHeader('Access-Control-Allow-Origin', Config.WEB_APP_HOST);
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002');
+
+            // Request methods you wish to allow
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+            // Request headers you wish to allow
+            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+
+            // Set to true if you need the website to include cookies in the requests sent
+            // to the API (e.g. in case you use sessions)
+            res.setHeader('Access-Control-Allow-Credentials', true);
+
+            // Pass to next layer of middleware
+            next();
+})
+
 // corsOptions
 
 
