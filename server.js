@@ -118,3 +118,9 @@ mongoose.connection.once('open', () => {
     // Backend port listening of env or 3500
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
+
+mongoose.connection.on('error', err => {
+    copnsole.log(err);
+    logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,
+    'mondoErrLog.log')
+})

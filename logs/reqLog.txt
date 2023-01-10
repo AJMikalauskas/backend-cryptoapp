@@ -2813,3 +2813,11 @@
 20230110	11:31:52	15734568-c85f-466c-b342-4f939b2ce6b2	OPTIONS	http://localhost:3002	/coins/retrieve
 20230110	11:31:52	b4a731a5-e02c-4597-a80d-6a7948fdb3e0	POST	http://localhost:3002	/coins/retrieve
 20230110	11:32:09	279edb34-6f09-4be8-bfcb-8505110e4f1c	GET	http://localhost:3002	/logout
+20230110	12:10:54	425aeec5-1b89-4f00-af3c-3778dab4b512	OPTIONS	http://localhost:3002	/login
+20230110	12:10:54	5a18e24a-337e-4930-b433-01ba6999a4b0	POST	http://localhost:3002	/login
+20230110	12:10:55	18d3cb29-71b2-4778-86b9-bac2005a7336	OPTIONS	http://localhost:3002	/coins/retrieveChartInfo
+20230110	12:10:55	3d22fca3-c144-446a-87a9-2d65cbb3b380	GET	http://localhost:3002	/coins/coinsRetrieve
+20230110	12:10:55	89c700bd-ee45-4d51-8d59-cdec68e3d687	POST	http://localhost:3002	/coins/retrieveChartInfo
+20230110	12:10:55	bc1d3b9a-1ca6-4d73-8880-8203c42e636c	OPTIONS	http://localhost:3002	/coins/retrieve
+20230110	12:10:55	eb3a5643-c871-4e38-80d1-653be4529a67	POST	http://localhost:3002	/coins/retrieve
+20230110	12:11:06	7d518e8b-c582-4b5e-814b-e9e8ed3ceaf0	GET	http://localhost:3002	/logout
