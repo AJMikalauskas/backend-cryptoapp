@@ -23,7 +23,7 @@ app.use(logger);
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-//app.use(credentials);
+app.use(credentials);
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
 app.use(cors(corsOptions));
