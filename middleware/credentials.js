@@ -8,6 +8,7 @@ const credentials = (req,res,next) => {
         res.header('Access-Control-Allow-Origin', "http://localhost:3002")
         res.header('Access-Control-Allow-Credentials', true);
     }
+    //res.status(200);
     next();
 }
 

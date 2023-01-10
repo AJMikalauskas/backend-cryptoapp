@@ -20,7 +20,6 @@ connectDB();
 // custom middleware logger
 app.use(logger);
 
-app.use(credentials);
 
 // let whitelist = ['http:localhost:3002'];
 // let corsOptions = {
@@ -36,6 +35,7 @@ app.use(credentials);
 // }
 
 // Cross Origin Resource Sharing -> put in separate file in config folder.
+app.use(credentials);
 app.use(cors(corsOptions));
 
 app.use(function(req,res,next) { 
